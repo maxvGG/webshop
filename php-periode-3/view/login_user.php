@@ -1,6 +1,6 @@
 <?php 
     include('../config/connect.php');
-    include('../src/login_user.php');
+    include('../src/login.php');
     
     if(!empty($_POST)){
         $sfd = setFormData();
