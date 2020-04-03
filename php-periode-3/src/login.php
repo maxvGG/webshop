@@ -10,10 +10,11 @@
         if(isset($_POST['field_password']) && $_POST['field_password'] != ''){
             $password = dbp($_POST['field_password']);
                    
-            $sql = "SELECT password FROM user WHERE emailadres = '$email'";    
+            $sql = "SELECT * FROM user WHERE emailadres = '$email'";    
             $result = mysqli_query($con,$sql);
             $row = mysqli_fetch_assoc($result);
             $source = $row['password'];
+            $permissions = $row['rechten'];
         }
         $sql = "SELECT emailadres FROM user WHERE emailadres = '$email'";
         
@@ -34,6 +35,9 @@
                             session_start();
 
                             $_SESSION['loggedin'] = true;
+                            $_SESSION['name'] = dbp($row['name']);
+                            $_SESSION['permissions'] = $permissions;
+                            // dd($_SESSION['permissions']);
                             
                             // $_SESSION['permissions'] = $rechten;
                             

@@ -58,14 +58,14 @@ function setFormData(){
 
 
     // pwd_hashed in bind_param zetten nog niet gelukt 
-    $query1 = $con->prepare("INSERT INTO user(firstname,middlename,lastname,birthdate,emailadres,password,gender,street,houseNumber,houseNumber_addon,zipcode,city,country,phone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
-    
-    if ($query1 === false) {
+    $query1 = $con->prepare("INSERT INTO costumer(firstname,middlename,lastname,emailadres,password,gender,street,houseNumber,houseNumber_addon,zipcode,city,country,phone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);");
+    if ($query1->execute() === false) {
         echo mysqli_error($con)." - ";
         exit(__LINE__);
     }
+    
     // hashed password zit er nog niet in 
-    $query1->bind_param('ssssssssssssss', $firstname,$middlename,$lastname,$date,$email,$pwd_hashed,$gender,$street,$house,$addon,$zipcode,$city,$country,$phone);
+    $query1->bind_param('sssssssssssss', $firstname,$middlename,$lastname,$email,$pwd_hashed,$gender,$street,$house,$addon,$zipcode,$city,$country,$phone);
     if ($query1->execute() === false) {
         echo mysqli_error($con)." - ";
         exit(__LINE__);

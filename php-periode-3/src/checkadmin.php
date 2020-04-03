@@ -2,13 +2,9 @@
     @session_start();
 
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == "'1") {
+    // dd($_SESSION['name']);
     // echo "welcome". $_SESSION['name']. "!";
-    echo"<script>console.log('ingeloged')</script>";
-    if($_SESSION['permissions'] === '2'){
-        $_SESSION['admin'] = true;
-    } else {
-        $_SESSION['admin'] = false;
-    }
+    echo"<sript>console.log('ingeloged')</script>";
     // dd($_SESSION);
 } else {
     // echo $_SESSION['loggedin'];
